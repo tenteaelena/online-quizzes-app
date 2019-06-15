@@ -1,0 +1,15 @@
+a:hover {
+  background: darkslateblue;
+}
+
+li{
+  cursor:pointer;
+  border-right: 1px darkslateblue solid ;
+}
+
+li:hover{
+  color: white;
+}
+
+a{
+}

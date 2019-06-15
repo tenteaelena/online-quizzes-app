@@ -1,0 +1,15 @@
+<h3>Delete quiz ?</h3>
+
+<div mat-dialog-content class="pt-2">
+  <p>{{data.text}}</p>
+</div>
+
+<div [innerHtml]="htmlContent"></div>
+
+<div mat-dialog-actions class="pt-3 d-flex justify-content-between">
+
+  <button mat-raised-button (click)="onYes()">Yes</button>
+  <button mat-raised-button (click)="onClose()">No</button>
+
+</div>
+

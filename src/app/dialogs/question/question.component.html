@@ -1,0 +1,9 @@
+<h4>{{questionObj['q']}}</h4>
+<form [formGroup]="form">
+  <mat-radio-group>
+    <mat-radio-button *ngFor="let a of questionObj['a']; let i = index"
+                      class="radio-button"
+                      [value]="a">{{a}}
+    </mat-radio-button>
+  </mat-radio-group>
+</form>

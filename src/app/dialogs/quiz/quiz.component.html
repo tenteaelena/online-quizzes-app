@@ -1,0 +1,16 @@
+<h3>{{quizName}}</h3>
+<div>
+
+  <mat-dialog-content>
+    <ngb-carousel *ngIf="info">
+      <ng-template ngbSlide *ngFor="let n of info; let i = index">
+        <app-question
+          [questionObj]="info[i]"></app-question>
+      </ng-template>
+    </ngb-carousel>
+
+    <button mat-raised-button (click)="submitAnswers()">Submit answers</button>
+
+  </mat-dialog-content>
+
+</div>

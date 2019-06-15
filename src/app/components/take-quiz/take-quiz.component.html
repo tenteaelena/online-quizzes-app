@@ -1,0 +1,37 @@
+<app-side-menu></app-side-menu>
+
+<div class="container pt-4">
+  <div class="row">
+    <div class="col-md-12">
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Quiz name</th>
+          <th scope="col">Creator</th>
+          <th scope="col">No of questions</th>
+          <th scope="col">Date created</th>
+          <th scope="col">Last time edited</th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody *ngIf="finish">
+        <tr  *ngFor="let leaf of tree.quizezLeafs(); let i = index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{leaf}}</td>
+          <td>{{tree.getParentOfNode(leaf)}}</td>
+          <td>{{intrebari[i]}}</td>
+          <td>some date</td>
+          <td>some date </td>
+          <td><i class="material-icons" matTooltip="Take the quiz" (click)="onStartQuiz(leaf, tree.getParentOfNode(leaf))">play_circle_outline</i></td>
+        </tr>
+        </tbody>
+      </table>
+
+
+
+    </div>
+  </div>
+  <div class="lds-roller" *ngIf="!finish"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>

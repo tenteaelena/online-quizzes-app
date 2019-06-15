@@ -1,0 +1,62 @@
+<app-side-menu></app-side-menu>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 pt-4">
+
+      <form [formGroup]="createQuizForm">
+        Value: {{createQuizForm.value | json}}
+
+        <hr>
+
+        <!-- TODO: VALIDARI -->
+
+        <mat-form-field>
+          <input matInput placeholder="Quiz title" formControlName="title">
+        </mat-form-field>
+
+        <div formArrayName="Questions">
+
+          <div *ngFor="let questions of createQuizForm['controls'].Questions['controls']; let i = index"
+               [formGroupName]="i" style="border: 1px solid black; margin: 5px">
+
+            <mat-form-field>
+              <input matInput placeholder="Question {{i+1}}" formControlName="question">
+            </mat-form-field>
+
+            <br>
+
+            <div formArrayName="answers">
+              <div *ngFor="let ans of questions['controls'].answers['controls']; let j = index" [formGroupName]="j">
+                <mat-form-field>
+                  <input matInput placeholder="Answer {{j+1}}" formControlName="ans">
+                </mat-form-field>
+                <button mat-raised-button (click)="deleteAnswers(i, j)">Delete answer</button>
+              </div>
+            </div>
+            <button mat-raised-button color="primary" (click)="addAnswers(i)">Add answer</button>
+
+            <button mat-raised-button (click)="deleteQuestion(i)">Delete question</button>
+
+            <br>
+
+            <mat-form-field>
+              <mat-select placeholder="Select correct answer" formControlName="answerType">
+
+                <mat-option *ngFor="let ans of questions['controls'].answers['controls']; let j = index" value="{{j+1}}">{{j+1}}</mat-option>
+
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+        </div>
+
+        <button mat-raised-button color="primary" (click)="addQuestion()">Add question</button>
+
+        <button mat-raised-button color="primary" (click)="saveForm()">Save quiz</button>
+      </form>
+
+
+    </div>
+  </div>
+</div>

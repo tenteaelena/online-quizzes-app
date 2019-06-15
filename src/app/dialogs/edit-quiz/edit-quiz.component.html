@@ -1,0 +1,69 @@
+<mat-dialog-content class="pt-2">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 pt-4" *ngIf="finish">
+
+        <form [formGroup]="form.createQuizForm">
+          <!--Value: {{form.createQuizForm.value | json}}-->
+
+          <hr>
+
+          <!-- TODO: VALIDARI -->
+
+          <mat-form-field>
+            <input matInput placeholder="Quiz title" formControlName="title">
+          </mat-form-field>
+
+          <div @list formArrayName="Questions">
+
+            <div *ngFor="let questions of form.createQuizForm['controls'].Questions['controls']; let i = index"
+                 [formGroupName]="i" style="border: 1px solid black; margin: 5px">
+
+              <mat-form-field @items>
+                <input matInput placeholder="Question {{i+1}}" formControlName="question">
+              </mat-form-field>
+
+
+              <br>
+
+              <div formArrayName="answers">
+                <div *ngFor="let ans of questions['controls'].answers['controls']; let j = index" [formGroupName]="j">
+                  <mat-form-field @items>
+                    <input matInput placeholder="Answer {{j+1}}" formControlName="ans">
+                  </mat-form-field>
+                  <button @items mat-raised-button (click)="form.deleteAnswers(i, j)">Delete answer</button>
+                </div>
+              </div>
+              <button @items mat-raised-button color="primary" (click)="form.addAnswers(i)">Add answer</button>
+
+              <button @items mat-raised-button (click)="form.deleteQuestion(i)">Delete question</button>
+
+              <br>
+
+              <mat-form-field>
+                <mat-select @items placeholder="Select correct answer" formControlName="answerType">
+
+                  <mat-option *ngFor="let ans of questions['controls'].answers['controls']; let j = index"
+                              value="{{j+1}}">{{j+1}}
+                  </mat-option>
+
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <button mat-raised-button color="primary" (click)="form.addQuestion()">Add question</button>
+
+
+        </form>
+
+        <button mat-raised-button color="primary" (click)="onSaveQuiz()">Save quiz</button>
+
+      </div>
+
+
+      <div class="lds-roller" *ngIf="!finish"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+    </div>
+  </div>
+</mat-dialog-content>

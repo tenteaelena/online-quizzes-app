@@ -1,0 +1,8 @@
+i:hover{
+  cursor: pointer;
+}
+
+tbody tr:hover{
+  background: rgba(72,61,139,0.7);
+  color: white;
+}
