@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validator, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-question',
@@ -11,15 +11,22 @@ export class QuestionComponent implements OnInit {
   @Input()
   questionObj: object;
 
-  value: string;
+  @Input()
+  disableQuestions: boolean;
 
+  @Output() radioSelected = new EventEmitter<string>();
+
+  selected: string;
   form: FormGroup;
 
   constructor(public fb: FormBuilder) {
-    this.form = fb.group({value: this.value})
+    this.form = fb.group({value: ''})
   }
 
   ngOnInit() {
   }
 
+  radioGroupChange(event: any){
+    this.radioSelected.emit(this.selected) //trimite valoarea mat-radio-group
+  }
 }

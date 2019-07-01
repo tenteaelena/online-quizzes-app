@@ -1,7 +1,7 @@
 <h4>{{questionObj['q']}}</h4>
 <form [formGroup]="form">
-  <mat-radio-group>
-    <mat-radio-button *ngFor="let a of questionObj['a']; let i = index"
+  <mat-radio-group (change)="radioGroupChange($event)" formControlName="value" [(ngModel)]="selected" [disabled]="disableQuestions">
+    <mat-radio-button *ngFor="let a of questionObj['a']"
                       class="radio-button"
                       [value]="a">{{a}}
     </mat-radio-button>

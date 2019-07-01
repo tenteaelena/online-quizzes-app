@@ -17,12 +17,13 @@ export class Block {
     this.hash = this.calculateHash();
   }
 
-  calculateHash(){
+
+  private calculateHash(){
     return sha256(this.index + this.timestamp + this.data + this.prevHash + this.nonce);
   }
 
   public mineBlock(dificulty){
-    console.log('mining');
+    //console.log('mining');
     while(this.hash.substring(0, dificulty) != Array(dificulty + 1).join("0")){
       //increment nonce
       this.nonce++;
@@ -30,9 +31,9 @@ export class Block {
       //recalculate hash value
       this.hash = this.calculateHash();
 
-      console.log('calculated hash: ', this.hash )
+      //console.log('calculated hash: ', this.hash )
     }
-    console.log('block mined: ', this.hash)
+    //console.log('block mined: ', this.hash)
 
     return this.hash;
   }

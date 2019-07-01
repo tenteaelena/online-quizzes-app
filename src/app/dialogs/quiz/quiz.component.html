@@ -1,11 +1,14 @@
 <h3>{{quizName}}</h3>
 <div>
 
+  <p>Timp:{{timpUi}}</p>
   <mat-dialog-content>
     <ngb-carousel *ngIf="info">
       <ng-template ngbSlide *ngFor="let n of info; let i = index">
         <app-question
-          [questionObj]="info[i]"></app-question>
+          [questionObj]="info[i]"
+          (radioSelected)="onVoted($event , i)"
+          [disableQuestions]="timeHasPassed"></app-question>
       </ng-template>
     </ngb-carousel>
 

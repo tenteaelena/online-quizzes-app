@@ -95,7 +95,6 @@ export class TakeQuizComponent implements OnInit {
 
     this.extractDataFromDatabase();
 
-
   }
 
   private extractDataFromDatabase() {

@@ -15,7 +15,7 @@ export class QuizListComponent implements OnInit {
 
   quizList: Array<string>;
   questionNumberList: Array<string>;
-
+  date= '15/05/2019';
   path = 'users/' + localStorage.getItem('uid') + '/quizez';
 
   constructor(private dialog: MatDialog, private dom: DomSanitizer, private overlay: Overlay) {
@@ -57,7 +57,7 @@ export class QuizListComponent implements OnInit {
       autoFocus: false
     });
 
-    dialogRef.componentInstance.htmlContent = this.dom.sanitize(SecurityContext.HTML, '<p>ELENAAA</p>');
+    dialogRef.componentInstance.htmlContent = this.dom.sanitize(SecurityContext.HTML, '<p>You are about to delete <b>'+quizName+'</b> quiz!!!</p>');
   }
 
   onEdit(quizName: string) {

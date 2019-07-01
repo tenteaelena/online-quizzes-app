@@ -80,12 +80,20 @@ export class AddQuestionsFormComponent implements OnInit {
     return (<FormArray>this.createQuizForm.controls['Questions']).at(i).get('answers') as FormArray;
   }
 
+  public getAnswerAt(i, j){
+    const control = (<FormArray>this.createQuizForm.controls['Questions']).at(i).get('answers') as FormArray;
+
+    return control.at(j).get('ans').value;
+  }
+
   saveForm() {
     //show notification
     this.snackBar.openFromComponent(PizzaPartyComponent, {
       duration: 500,
       data: {text: 'Form saved!'}
     });
+
+    console.log(this.createQuizForm.value)
 
     this.updateDatabase();
 

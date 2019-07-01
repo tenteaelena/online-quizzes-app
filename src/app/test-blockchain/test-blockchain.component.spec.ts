@@ -8,7 +8,7 @@ describe('TestBlockchainComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TestBlockchainComponent ]
+      declarations: [ TestBlockchainComponent ],
     })
     .compileComponents();
   }));
