@@ -1,6 +1,7 @@
 # LicentaWebEtentea
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
+Developed in IntelliJ IDEA
 
 # Try this project
 For this project to work, you need to create a firebase project and link it to this project in app.module.ts. Where to add the Firebase configuration: 
